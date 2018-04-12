@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.BannerInfoActivity"
+    android:orientation="vertical">
+
+    <!-- 查找图书 提示 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:id="@+id/titleName"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题栏"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"></LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/banner_info_xidada"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:text="\t为了深入贯彻落实党的十八大精神，积极培育和践行社会主义核心价值观，根据县委培育和践行社会主义核心价值观活动的要求，结合我县教育工作实际，特制定本实施方案。
+\n\t一、指导思想\n
+\t党的十八大提出，倡导富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善，积极培育和践行社会主义核心价值观。富强、民主、文明、和谐是国家层面的价值目标，自由、平等、公正、法治是社会层面的价值取向，爱国、敬业、诚信、友善是公民个人层面的价值准则，这24个字是社会主义核心价值观的基本内容，为培育和践行社会主义核心价值观提供了基本遵循。深入贯彻落实党的十八大精神，培育和践行社会主义核心价值观，紧密围绕立德树人根本任务，不断强化师生爱党、爱国、爱社会主义教育，动员和激励广大师生自觉追求富强、民主、文明、和谐的国家理想，弘扬自由、平等、公正、法治的社会价值，把社会主义核心价值观融入学校育人工作的方方面面，引导广大师生以社会主义核心价值观为个人的价值追求、精神支柱和道德规范，立志为社会主义现代化建设作出应有的贡献。\n
+\n\t二、时间安排\n
+\t开展培育和践行社会主义核心价值观活动，本学期集中安排在2014年4月—6月进行。今后小学要把核心价值观列入思想品德课程，中学要把核心价值观列入思想政治课内容，并长期开展下去。\n
+\n\t三、活动内容\n
+\t1、把社会主义核心价值观与师德师风建设相结合。一是热爱学生是教师特有的情感、师德建设的核心。引导教师对学生要做到“爱心、责任心、耐心、细心”，充分了解学生情况，熟悉学生禀赋，理解学生需求，做到因材施教、按需施教，满足学生个性化发展的需要；二是引导广大教师牢固树立终身学习的理念，不断加强自身的政治和业务学习，把学习与教育发展要求、与提升创新能力、与破解工作难题紧密结合起来，做到既乐于学习、善于学习，更能够学以致用、用以促学、学用相长。三是引导教育广大教师要同党和国家的方针政策保持一致，在工作中严格遵守宪法及有关教育的法律法规，自觉遵守《中小学教师职业道德规范》和“三门峡教师二十不准”，做到廉洁从教，依法治教、依法施教。四是积极引导广大教师树立崇高的职业理想、职业道德，切实增强教书育人的社会责任感和历史使命感，努力打造一支师德高尚、业务精湛、乐于奉献的高素质教师队伍，为推动我县教育体育事业又好又快发展，提供强有力的人才支撑和智力保障。\n
+\t2、把社会主义核心价值观与未成年人思想道德建设相结合。加强和改进未成年人思想道德建设，事关国家前途、民族命运，事关家庭幸福、社会和谐。一是从“严”字上下功夫，严格课程标准落实，推进“自主——合作——探究”模式的课程改革，落实立德树人的根本任务。加强学段、学科、教育教学环节、育人力量和阵地五个方面的统筹，构建全方位、立体化的育人体系。严格学校综合管理，研究制定义务教育学校管理标准和中小学安全工作管理标准，开展校园周边环境整治和净化文化环境工作。二是从“实”字上下功夫，开展科普、环境、爱粮、节粮、节水等各类专题教育。推进中小学、幼儿园利用博物馆、纪念馆和青少年宫等文化资源开展教育活动。让孩子们熟读并记住24个字，抓好友善、孝敬、诚信等中华传统美德教育、家庭教育，引导未成年人树立正确的道德价值，在核心价值观的沐浴下健康成长。\n
+\t3、把社会主义核心价值观与国学经典学习相结合。一是各单位要以国学经典学习为切入点，充分发挥活动的引领、导向和发动作用，在教育系统营造崇尚阅读、崇尚知识的风气。引导广大教职工多读书、读好书、读经典之书，以读养德。二是各学校每周不少于两个学时的时间学习经典，或通过国旗下的讲话、晨读朗诵、课前齐诵、赏析吟诵、朗读比赛、演讲比赛、征文等形式开展活动，使学生在学习中受到中华民族传统文化的熏陶。培养学生要有一颗向善的心、感恩的心、平和的心、进取的心。推动广大师生养成良好的读书学习习惯，促进师生文明素养和干事创业能力的提升。\n
+\t4、把社会主义核心价值观与爱岗敬业相结合。各单位要深入学习社会主义核心价值观，要紧紧围绕“三个倡导”这一基本内容，以实际行动践行爱国、敬业、诚信、友善的个人层面价值准则。积极引导教师在“传道授业，我会什么？”中，比学习，争当学习型优秀教师，让组织和同志满意；在“关爱学生，我做什么？”中，比教学，争当教育教学中坚骨干，让学生和学校满意；在“为人师表，我凭什么？”中，比师德，争做师德师风模范个人，让家长和社会满意。积极开展向身边践行社会主义核心价值观先进人物学习活动。
+\t5、把社会主义核心价值观与校园文化建设结合起来。一是以学校为单位，采取主题班会、专题辅导、集中宣讲等形式，组织学习社会主义核心价值观的基本内容；二是开展“做一个有道德的人”、“学会感恩”等活动，组织中小学生在日常生活中有针对性地积极参加社会公益性的实践活动。三是抓好“四爱、五心”即（爱祖国、爱家乡、爱学校、爱师长；忠心献祖国、孝心献父母、爱心献社会、诚心献他人、信心留自己）。四是利用重大节日掀起学习社会主义核心价值观的热潮，邀请“五老”（老干部、老战士、老专家、老教师、老模范）深入中小学校，结合自身实际进行教育。同时，开展以“爱国主义”为主题的教育活动，让学生读一本爱国主义书籍，观看一部爱国主义影片，学唱一首爱国歌曲，讲一个爱国主义故事，以此培养学生爱祖国、爱家乡的情感。\n
+\n\t四、工作要求\n
+\t1、加强领导，提高认识。各单位要切实加强对社会主义核心价值观教育活动的领导。单位负责人是活动的第一责任人，成立领导小组和办公室。明确任务，落实责任，制订具体实施方案，确保活动顺利开展，取得实效。\n
+\t2、加强宣传，营造氛围。各级学校要把社会主义核心价值观基本内容制成版面，展示在醒目位置，要充分利用局域网、校报、黑板报、橱窗、宣传栏、标语横幅等阵地大力宣传开展社会主义核心价值观活动的重要性。\n
+\t3、加强督导，强化考核。为确保活动顺利开展并取得实效，局将成立专门督查组，对各单位开展活动情况进行督导检查，对思想不重视、措施不得力、活动走过场的单位，要严肃追究其领导责任，确保活动取得实效。\n
+\t4、各单位要在4月29日前向局活动办报送活动方案，整个活动结束后向局活动办报活动专题报告。\n
+"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

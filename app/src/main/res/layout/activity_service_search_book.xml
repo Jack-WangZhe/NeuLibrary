@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.serviceSearchBook"
+    android:orientation="vertical">
+
+    <!-- 查找图书 提示 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查找书籍"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/service_searchbook_circle_input"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <!-- 搜索输入框 -->
+        <EditText
+            android:layout_alignParentLeft="true"
+            android:id="@+id/searchBook"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="请输入书籍名称"
+            android:background="@null"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textCursorDrawable="@null"
+            android:lines="1"
+            android:maxLength="20"/>
+
+        <!-- 搜索按钮 -->
+        <ImageView
+            android:id="@+id/submitSearch"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/service_searchbook"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"></LinearLayout>
+
+    <ListView
+        android:id="@+id/searchBookList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+</LinearLayout>

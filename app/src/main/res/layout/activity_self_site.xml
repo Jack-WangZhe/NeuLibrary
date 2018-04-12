@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.selfSiteActivity"
+    android:orientation="vertical">
+
+    <!-- 设置 提示 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"></LinearLayout>
+
+    <!-- 夜间模式 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="夜间模式"
+            android:textSize="20sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 夜间模式切换按钮 -->
+        <Switch
+            android:id="@+id/nightModel"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="20dp"
+            android:textOn="  "
+            android:textOff="  "
+            android:thumb="@drawable/self_site_nightmodel_switch_selector"
+            android:track="@drawable/self_site_nightmodel_switch_track_selector" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 字体大小 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="字体大小"
+            android:textSize="20sp"
+            android:textColor="#8b8b8b"/>
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!-- 字体大小：大 -->
+            <TextView
+                android:id="@+id/largeText"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:text="大"
+                android:layout_marginRight="25dp"/>
+            <!-- 字体大小：中 -->
+            <TextView
+                android:id="@+id/middleText"
+                android:layout_toRightOf="@+id/largeText"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:text="中"
+                android:layout_marginRight="25dp"/>
+            <!-- 字体大小：小 -->
+            <TextView
+                android:id="@+id/smallText"
+                android:layout_toRightOf="@+id/middleText"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:text="小"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 字体样式 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="字体样式"
+            android:textSize="20sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 字体样式：切换至下一步选项 -->
+        <ImageView
+            android:id="@+id/toTextStyle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/self_text_style"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 阅读背景 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阅读背景"
+            android:textSize="20sp"
+            android:textColor="#8b8b8b"/>
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!-- 阅读背景：绿 -->
+            <LinearLayout
+                android:id="@+id/readBackgroundGreen"
+                android:layout_centerVertical="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/self_read_background_green"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"></LinearLayout>
+            <!-- 阅读背景：粉 -->
+            <LinearLayout
+                android:id="@+id/readBackgroundPink"
+                android:layout_toRightOf="@+id/readBackgroundGreen"
+                android:layout_centerVertical="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/self_read_background_pink"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"></LinearLayout>
+            <!-- 阅读背景：橘 -->
+            <LinearLayout
+                android:id="@+id/readBackgroundOrange"
+                android:layout_toRightOf="@+id/readBackgroundPink"
+                android:layout_centerVertical="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/self_read_background_orange"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"></LinearLayout>
+            <!-- 阅读背景：蓝 -->
+            <LinearLayout
+                android:id="@+id/readBackgroundBlue"
+                android:layout_toRightOf="@+id/readBackgroundOrange"
+                android:layout_centerVertical="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/self_read_background_blue"
+                android:orientation="horizontal"></LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+
+</LinearLayout>

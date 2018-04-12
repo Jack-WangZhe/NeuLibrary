@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="000001"
+            android:id="@+id/bookId"/>
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:src="@drawable/book12"
+            android:id="@+id/bookImage"
+            />
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:background="#68bf5a"
+            android:gravity="center"
+            android:id="@+id/isPDF"
+            android:visibility="invisible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PDF"
+                android:textSize="15sp"
+                android:textColor="#fff"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_toRightOf="@id/bookImage"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/bookName"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="书名"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="作者："
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/bookAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="孙浩"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bookInfo"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="书籍简介"
+                android:textColor="#8b8b8b"
+                android:textSize="15sp"
+                android:textStyle="normal"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- 关注按钮 -->
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/borrow"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="续借"
+            android:textSize="15sp"
+            android:textColor="#5CACEE"
+            android:background="@drawable/playground_user_concern"
+            android:focusable="true"
+            />
+        <!-- 已关注按钮 -->
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/borrowed"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="已续借"
+            android:textSize="15sp"
+            android:textColor="#8b8b8b"
+            android:background="@drawable/playground_user_concerned"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/daoqi"
+            android:layout_toLeftOf="@+id/borrowed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="到期"
+            android:layout_marginRight="20dp"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/overTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/daoqi"
+            android:text="2018-1-1"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <!-- 分割线 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#f0f0f0"></LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_round_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <!-- 书图 -->
+        <ImageView
+            android:id="@+id/bookPicture"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/test01"/>
+
+        <RelativeLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#000000"
+            android:alpha="0.7"
+            android:padding="10dp">
+            <LinearLayout
+                android:id="@+id/bookName_remainNum"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- 书名 -->
+                <TextView
+                    android:id="@+id/bookName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="nodeJS测试书"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="[剩余"
+                    android:textColor="#ffffff"
+                    android:textStyle="normal"/>
+                <!-- 剩余数目 -->
+                <TextView
+                    android:id="@+id/remainNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="2"
+                    android:textColor="#ffffff"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="本]"
+                    android:textColor="#ffffff"
+                    android:textStyle="normal"/>
+            </LinearLayout>
+            <!-- 出版社 -->
+            <TextView
+                android:layout_below="@+id/bookName_remainNum"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/publishOrg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="东软电子出版社"
+                android:textStyle="normal"
+                android:textColor="#bfbfbf"
+                />
+
+            <!-- 作者 -->
+            <TextView
+                android:layout_below="@+id/publishOrg"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/authorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="刘涛"
+                android:textStyle="normal"
+                android:textColor="#bfbfbf"
+                />
+
+            <LinearLayout
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <!-- 书籍地址 -->
+                <TextView
+                    android:id="@+id/bookLocation"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0997ea"
+                    android:textSize="18sp"
+                    android:text="D32 第二列 第二排 399"/>
+            </LinearLayout>
+
+            <!-- 加入书架 -->
+            <Button
+                android:id="@+id/joinBookself"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:text="加入书架"
+                android:textSize="15sp"
+                android:textColor="#00EE00"
+                android:background="@drawable/recommend_dialog_joinbookself"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="近 期 借 阅 用 户"
+        android:textColor="#8b8b8b"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:id="@+id/recentBorrowUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialogCancel"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dialog_cancel"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>

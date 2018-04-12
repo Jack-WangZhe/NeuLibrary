@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="nl.neulibrary.HomeActivity">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:id="@+id/AllPager"></android.support.v4.view.ViewPager>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/navigate"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff">
+
+        <!-- 推荐 -->
+        <RadioButton
+            style="@style/radiobutton_style"
+            android:id="@+id/recommend"
+            android:button="@null"
+            android:background="#ffffff"
+            android:drawableTop="@drawable/recommend_change"
+            android:textColor="@color/color_change"
+            android:text="  推荐"
+            android:checked="true"
+            android:textSize="10dp"
+            />
+
+        <!-- 操场 -->
+        <RadioButton
+            style="@style/radiobutton_style"
+            android:id="@+id/playground"
+            android:button="@null"
+            android:background="#ffffff"
+            android:drawableTop="@drawable/playground_change"
+            android:textColor="@color/color_change"
+            android:text="  操场"
+            android:textSize="10dp"
+            />
+
+        <!-- 服务 -->
+        <RadioButton
+            style="@style/radiobutton_style"
+            android:id="@+id/survice"
+            android:button="@null"
+            android:background="#ffffff"
+            android:drawableTop="@drawable/survice_change"
+            android:textColor="@color/color_change"
+            android:text="  服务"
+            android:textSize="10dp"
+            />
+
+        <!-- 我的 -->
+        <RadioButton
+            style="@style/radiobutton_style"
+            android:id="@+id/self"
+            android:button="@null"
+            android:background="#ffffff"
+            android:drawableTop="@drawable/self_change"
+            android:textColor="@color/color_change"
+            android:text="  我的"
+            android:textSize="10dp"
+            />
+    </RadioGroup>
+</LinearLayout>

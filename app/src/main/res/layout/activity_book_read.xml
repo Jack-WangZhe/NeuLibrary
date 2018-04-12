@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.BookReadActivity">
+
+    <!-- 标头 -->
+    <RelativeLayout
+        android:id="@+id/bookReadTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日语学习基础"
+            android:textSize="20sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 章节选择 -->
+        <ImageView
+            android:id="@+id/sectionButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/readbook_section"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:id="@+id/Titleline"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:layout_below="@+id/bookReadTitle"
+        android:background="@drawable/self_bookself_decorate"
+        android:orientation="vertical"></LinearLayout>
+
+    <ScrollView
+        android:layout_below="@+id/Titleline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <!-- 章节标头-->
+            <TextView
+                android:id="@+id/bookSectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第一章 我在最美的时光遇见了你"
+                android:textSize="22sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+
+            <!-- 章节内容 -->
+            <TextView
+                android:id="@+id/bookSectionContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这里有一大堆的文字\n这里还是一大堆的文字"
+                android:textColor="#1E1E1E"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:lineSpacingExtra="5dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#bfbfbf"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/bookread_back"/>
+        <ImageView
+            android:id="@+id/config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/bookread_config"/>
+    </LinearLayout>
+
+</RelativeLayout>

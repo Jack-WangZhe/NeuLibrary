@@ -1,0 +1,120 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragments.recommendFragment">
+
+    <!-- 推荐页 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/service_searchbook_circle_input"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <!-- 搜索输入框 -->
+            <EditText
+                android:layout_alignParentLeft="true"
+                android:id="@+id/searchBook"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:hint="请输入书籍名称"
+                android:background="@null"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textCursorDrawable="@null"
+                android:lines="1"
+                android:maxLength="20"/>
+
+            <!-- 搜索按钮 -->
+            <ImageView
+                android:id="@+id/submitSearch"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/service_searchbook"/>
+        </RelativeLayout>
+
+        <!-- 年级与系别选项 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:padding="20dp">
+            <!-- 计时器 -->
+            <ImageView
+                android:id="@+id/time_clock"
+                android:layout_gravity="left"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/time_clock"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <!-- 年级 -->
+                <LinearLayout
+                    android:id="@+id/AllRecommend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图书推荐"
+                        android:textSize="15sp"
+                        android:textColor="#4682B4"/>
+                    <Button
+                        android:id="@+id/recommend_downline"
+                        android:layout_marginTop="3dp"
+                        android:layout_width="80dp"
+                        android:layout_height="7dp"
+                        android:background="@drawable/recommend_check"/>
+                </LinearLayout>
+                <!-- 系别 -->
+                <LinearLayout
+                    android:id="@+id/AllType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图书分类"
+                        android:textSize="15sp"
+                        android:textColor="#4682B4"/>
+                    <Button
+                        android:id="@+id/type_downline"
+                        android:layout_marginTop="3dp"
+                        android:layout_width="80dp"
+                        android:layout_height="7dp"
+                        android:background="@drawable/recommend_check"
+                        android:visibility="invisible"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:layout_width="fill_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:id="@+id/rf_fragment"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+</FrameLayout>

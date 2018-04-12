@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nl.neulibrary">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/neulibrary_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".selfBookselfActivity" />
+        <activity android:name=".selfMessageActivity" />
+        <activity android:name=".selfDynamicActivity" />
+        <activity android:name=".selfReadRecordActivity" />
+        <activity android:name=".selfSiteActivity" />
+        <activity android:name=".selfPointsDesActivity" />
+        <activity android:name=".selfSite_wordStyleActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".TestActivityRecommendBook" />
+        <activity android:name=".BookReadActivity" />
+        <activity android:name=".playgroundMessage" />
+        <activity android:name=".playgroundSeePerson" />
+        <activity android:name=".serviceSearchBook" />
+        <activity android:name=".serviceRank" />
+        <activity android:name=".BannerInfoActivity" />
+        <activity android:name=".borrowBookActivity" />
+        <activity android:name=".rebackBookActivity" />
+        <activity android:name=".renewBookActivity" />
+        <activity android:name=".userInfoActivity" />
+        <activity android:name=".AttentionActivity" />
+        <activity android:name=".FansActivity"></activity>
+    </application>
+
+</manifest>

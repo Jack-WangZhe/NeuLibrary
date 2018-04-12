@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/rankNumber">
+            <ImageView
+                android:id="@+id/goldMedal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/service_rank_goldmedal"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/silvermedal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/service_rank_silvermedal"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/coppermedal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/service_rank_coppermedal"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/usersRank"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="1"
+                android:textColor="#1588fa"
+                android:textSize="20sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <tools.CircleImageView
+            android:layout_toRightOf="@+id/rankNumber"
+            android:layout_centerVertical="true"
+            android:id="@+id/usersPhoto"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/self_photo"/>
+
+        <TextView
+            android:id="@+id/usersName"
+            android:layout_toRightOf="@+id/usersPhoto"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVA-Sun"
+            android:textSize="20sp"
+            android:textColor="#1588fa"/>
+
+        <TextView
+            android:id="@+id/getNumbers"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="200"
+            android:textColor="#1588fa"
+            android:textSize="20sp"
+            android:layout_gravity="right"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="#8b8b8b"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></LinearLayout>
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!-- 动态用户头像 -->
+        <tools.CircleImageView
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/userPhoto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/self_photo"
+            />
+        <LinearLayout
+            android:layout_toRightOf="@id/userPhoto"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp">
+            <!-- 动态 用户名 -->
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="飞翔的企鹅"
+                android:textColor="#000000"
+                android:textSize="16dp"/>
+            <!-- 动态 发布时间 -->
+            <TextView
+                android:id="@+id/userSendTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1分钟以前"
+                android:textColor="#bfbfbf"
+                android:textSize="14dp"/>
+        </LinearLayout>
+        <!-- 关注按钮 -->
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/concernUser"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="关注"
+            android:textSize="15sp"
+            android:textColor="#5CACEE"
+            android:background="@drawable/playground_user_concern"
+            android:focusable="true"
+            />
+        <!-- 已关注按钮 -->
+        <Button
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/concernedUser"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="已关注"
+            android:textSize="15sp"
+            android:textColor="#8b8b8b"
+            android:background="@drawable/playground_user_concerned"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    <!-- 动态 观看图书 -->
+    <tools.ArcBookImage
+        android:id="@+id/imageInfo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        android:src="@drawable/test_book3"/>
+    <!-- 动态 用户评论 -->
+    <TextView
+        android:id="@+id/itemDesc"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="今天读了这本书，感慨万千，且行且珍惜"
+        android:textSize="15dp"
+        android:textColor="#000000"/>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
+        <!-- 动态用户点赞图片 -->
+        <ImageView
+            android:id="@+id/praiseItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/self_dynamic_praise"/>
+        <!-- 动态用户点赞个数 -->
+        <TextView
+            android:id="@+id/praiseNum"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#8b8b8b"
+            android:textSize="15sp"/>
+        <!-- 动态用户评论图片 -->
+        <ImageView
+            android:id="@+id/commentItem"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/self_dynamic_comment"/>
+        <!-- 动态用户评论个数 -->
+        <TextView
+            android:id="@+id/commentNum"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#8b8b8b"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+</LinearLayout>

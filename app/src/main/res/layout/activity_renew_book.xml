@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.renewBookActivity"
+    android:orientation="vertical">
+
+    <!-- 借书 提示 -->
+    <RelativeLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/TopMenu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="续借"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_below="@+id/TopMenu"
+        android:id="@+id/FirstLine"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"
+        android:orientation="vertical"></LinearLayout>
+
+    <ListView
+        android:layout_below="@+id/FirstLine"
+        android:id="@+id/borrowBookList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+</RelativeLayout>

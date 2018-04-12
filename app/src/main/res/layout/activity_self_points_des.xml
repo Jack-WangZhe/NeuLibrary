@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.selfPointsDesActivity"
+    android:orientation="vertical">
+
+    <!-- 积分说明 提示 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="积分说明"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"></LinearLayout>
+
+    <!-- 公告板上方两个支架 -->
+    <RelativeLayout
+        android:layout_marginTop="-9dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="6dp"
+            android:layout_height="50dp"
+            android:background="#503d00"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="150dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="6dp"
+            android:layout_height="50dp"
+            android:background="#503d00"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="150dp"></LinearLayout>
+    </RelativeLayout>
+
+    <!-- 公告板内容 -->
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/self_bulletin_board"
+        android:padding="30dp">
+        <TextView
+            android:id="@+id/pointsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:text="1.登录 : 1点/天,连续登陆:(连续登陆天数-1)点/天,上限29点。\n2.在线阅读 : 1点/小时,每天上限24点。\n3.书友圈积分 : 书友圈分享内容5积分,每天上限2个分享10积分。\n4.登录 : 1点/天,连续登陆:(连续登陆天数-1)点/天,上限29点。\n5.在线阅读 : 1点/小时,每天上限24点。\n6.书友圈积分 : 书友圈分享内容5积分,每天上限2个分享10积分。\n7.登录 : 1点/天,连续登陆:(连续登陆天数-1)点/天,上限29点。\n8.在线阅读 : 1点/小时,每天上限24点。\n9.书友圈积分 : 书友圈分享内容5积分,每天上限2个分享10积分。"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</LinearLayout>

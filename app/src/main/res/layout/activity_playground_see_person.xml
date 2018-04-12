@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="nl.neulibrary.playgroundSeePerson">
+
+    <!-- 谁可以看 提示 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <!-- 取消 -->
+        <RelativeLayout
+            android:id="@+id/cancelPlaygroundMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/back_playground"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_btn"
+                />
+            <TextView
+                android:layout_toRightOf="@id/back_playground"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="取消"
+                android:textSize="20sp"
+                android:textColor="#000"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="谁可以看"
+            android:textSize="25sp"
+            android:textColor="#000"/>
+
+        <!-- 完成 -->
+        <TextView
+            android:id="@+id/finishSetSeePerson"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="完成"
+            android:textSize="22sp"
+            android:textColor="#00BFFF"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"></LinearLayout>
+
+    <!-- 所有人可见 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:background="#fff">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有人可见"
+            android:textSize="23sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 所有人可见切换按钮 -->
+        <Switch
+            android:id="@+id/allPersonCanSee"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="20dp"
+            android:textOn="  "
+            android:textOff="  "
+            android:thumb="@drawable/self_site_nightmodel_switch_selector"
+            android:track="@drawable/self_site_nightmodel_switch_track_selector" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 关注可见 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:background="#fff">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注可见"
+            android:textSize="23sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 所有人可见切换按钮 -->
+        <Switch
+            android:id="@+id/attentionCanSee"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="20dp"
+            android:textOn="  "
+            android:textOff="  "
+            android:thumb="@drawable/self_site_nightmodel_switch_selector"
+            android:track="@drawable/self_site_nightmodel_switch_track_selector" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 粉丝可见 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:background="#fff">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粉丝可见"
+            android:textSize="23sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 所有人可见切换按钮 -->
+        <Switch
+            android:id="@+id/fansCanSee"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="20dp"
+            android:textOn="  "
+            android:textOff="  "
+            android:thumb="@drawable/self_site_nightmodel_switch_selector"
+            android:track="@drawable/self_site_nightmodel_switch_track_selector" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+
+    <!-- 仅自己可见 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:background="#fff">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="仅自己可见"
+            android:textSize="23sp"
+            android:textColor="#8b8b8b"/>
+        <!-- 所有人可见切换按钮 -->
+        <Switch
+            android:id="@+id/onlySelfCanSee"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="20dp"
+            android:textOn="  "
+            android:textOff="  "
+            android:thumb="@drawable/self_site_nightmodel_switch_selector"
+            android:track="@drawable/self_site_nightmodel_switch_track_selector" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#bfbfbf"></LinearLayout>
+</LinearLayout>
