@@ -7,11 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
 
 import beans.attentionListBean;
 import beans.fansListBean;
 import nl.neulibrary.R;
+import tools.BitmapCache;
 import tools.CircleImageView;
 
 
@@ -20,8 +25,10 @@ public class fansListAdapter extends BaseAdapter{
     private List<fansListBean> mDatas;
     ViewHolder holder = null;
     fansListBean bean ;
+    Context context;
 
     public fansListAdapter(Context context, List<fansListBean> datas) {
+        this.context=context;
         mInflater = LayoutInflater.from(context);
         mDatas = datas;
     }
@@ -61,7 +68,12 @@ public class fansListAdapter extends BaseAdapter{
         final TextView userId = holder.userId;
 
         bean = mDatas.get(i);
-        userPhoto.setImageResource(bean.getUserImageDrawable());
+        //userPhoto.setImageResource(bean.getUserImageDrawable());
+        holder.userPhoto.setTag(bean.getUserImageURL());
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.userPhoto, R.drawable.loading_on, R.drawable.loading_wrong);
+        imageLoader.get(bean.getUserImageURL(), listener);
         userId.setText(bean.getUserId());
         userName.setText(bean.getUserName());
         return view;

@@ -11,12 +11,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
 
 import beans.attentionListBean;
 import beans.borrowBookListBean;
 import nl.neulibrary.LoginActivity;
 import nl.neulibrary.R;
+import tools.BitmapCache;
 import tools.CircleImageView;
 
 
@@ -25,8 +30,10 @@ public class attentionListAdapter extends BaseAdapter{
     private List<attentionListBean> mDatas;
     ViewHolder holder = null;
     attentionListBean bean ;
+    Context context;
 
     public attentionListAdapter(Context context, List<attentionListBean> datas) {
+        this.context=context;
         mInflater = LayoutInflater.from(context);
         mDatas = datas;
     }
@@ -66,7 +73,12 @@ public class attentionListAdapter extends BaseAdapter{
         final TextView userId = holder.userId;
 
         bean = mDatas.get(i);
-        userPhoto.setImageResource(bean.getUserImageDrawable());
+        //userPhoto.setImageResource(bean.getUserImageDrawable());
+        holder.userPhoto.setTag(bean.getUserImageURL());
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.userPhoto, R.drawable.loading_on, R.drawable.loading_wrong);
+        imageLoader.get(bean.getUserImageURL(), listener);
         userId.setText(bean.getUserId());
         userName.setText(bean.getUserName());
         return view;

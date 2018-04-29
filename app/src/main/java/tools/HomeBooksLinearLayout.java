@@ -13,6 +13,17 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
 import nl.neulibrary.BookReadActivity;
 import nl.neulibrary.R;
 
@@ -86,11 +97,12 @@ public class HomeBooksLinearLayout extends LinearLayout{
     }
 
     //设置指定书的相关数据
-    public void setBookInfo(final Context context, int bookImageNum, final int bookImageUrl, final String bookName, boolean bookStatus, boolean bookPDF){
+    public void setBookInfo(final Context context, final String bookId, int bookImageNum, final String bookImageUrl, final String bookName, boolean bookStatus, boolean bookPDF){
 
         //需要将图片进行获取
         //别忘了加上
-
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
         switch (bookImageNum){
             case 1:
                 if (!bookStatus){
@@ -103,8 +115,25 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book1.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            //发送请求获取书籍信息
-                            showNoPDFDialog(context,bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showNoPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getJSONArray("recentBorrowUser"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getNoPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }else{
@@ -112,12 +141,31 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book1.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showPDFDialog(context,bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "这是一个简介");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getString("bookIntro"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }
                 bookName1.setText(bookName);
-                bookImage1.setImageResource(bookImageUrl);
+                ImageLoader.ImageListener listener1 = ImageLoader.getImageListener(bookImage1, R.drawable.loading_on, R.drawable.loading_wrong);
+                imageLoader.get(bookImageUrl, listener1);
                 break;
             case 2:
                 if (!bookStatus){
@@ -130,7 +178,25 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book2.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showNoPDFDialog(context,bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showNoPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getJSONArray("recentBorrowUser"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getNoPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }else{
@@ -138,12 +204,31 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book2.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showPDFDialog(context,bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "这是一个简介");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getString("bookIntro"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }
                 bookName2.setText(bookName);
-                bookImage2.setImageResource(bookImageUrl);
+                ImageLoader.ImageListener listener2 = ImageLoader.getImageListener(bookImage2, R.drawable.loading_on, R.drawable.loading_wrong);
+                imageLoader.get(bookImageUrl, listener2);
                 break;
             case 3:
                 if (!bookStatus){
@@ -156,7 +241,25 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book3.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showNoPDFDialog(context,bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showNoPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getJSONArray("recentBorrowUser"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getNoPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }else {
@@ -164,29 +267,61 @@ public class HomeBooksLinearLayout extends LinearLayout{
                     book3.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showPDFDialog(context, bookImageUrl, bookName, "3", "新东方出版社", "汪喆", "D33 第三排 433", "这是一个简介");
+                            getMethod getPDFBookInfo = new getMethod();
+                            getPDFBookInfo.setOnFinishListener(new OnGetFinishListener() {
+                                @Override
+                                public void OnGetFinished(String backInfo) {
+                                    try {
+                                        JSONObject back=new JSONObject(backInfo);
+                                        if (back.getBoolean("status")){
+                                            JSONObject info = back.getJSONObject("info");
+                                            showPDFDialog(context,bookId,bookImageUrl, bookName, info.getInt("remainNum")+"", info.getString("publishOrg"), info.getString("authorName"), info.getString("bookLocation"), info.getString("bookIntro"));
+                                        }else{
+                                            String info = back.getString("info");
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            getPDFBookInfo.getInfo(context,Urls.getPDFBookInfo+"?bookId="+bookId);
                         }
                     });
                 }
                 bookName3.setText(bookName);
-                bookImage3.setImageResource(bookImageUrl);
+                ImageLoader.ImageListener listener3 = ImageLoader.getImageListener(bookImage3, R.drawable.loading_on, R.drawable.loading_wrong);
+                imageLoader.get(bookImageUrl, listener3);
                 break;
         }
     }
 
-    public void showNoPDFDialog(final Context context,int book_pic_url,String book_name,String remain_num,String publish_org,String author_name,String book_location,String recent_borrow_user){
-        new NoPDFDialog(context, R.style.dialog,book_pic_url,book_name,remain_num,publish_org,author_name,book_location,recent_borrow_user,new NoPDFDialog.OnCloseListener() {
+    public void showNoPDFDialog(final Context context, final String bookId, String book_pic_url, String book_name, String remain_num, String publish_org, String author_name, String book_location, JSONArray recentBorrowUser){
+        new NoPDFDialog_String(context, R.style.dialog,book_pic_url,book_name,remain_num,publish_org,author_name,book_location,recentBorrowUser,new NoPDFDialog_String.OnCloseListener(){
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
                 if (confirm){
                     new CommomDialog(context, R.style.dialog, "您确定将此书添加到书架？", new CommomDialog.OnCloseListener(){
                         @Override
-                        public void onClick(Dialog dialog, boolean confirm) {
+                        public void onClick(final Dialog dialog, boolean confirm) {
                             if(confirm){
                                 //发送添加图书的请求信息
                                 //根据返回信息进行Toast
-                                Toast.makeText(context,"添加成功",Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
+                                getMethod addBookself=new getMethod();
+                                addBookself.setOnFinishListener(new OnGetFinishListener() {
+                                    @Override
+                                    public void OnGetFinished(String backInfo) {
+                                        try {
+                                            JSONObject back=new JSONObject(backInfo);
+                                            String info = back.getString("info");
+                                            Toast.makeText(context,info,Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                addBookself.getInfo(context, Urls.addBookself+"?bookId="+bookId);
                             }
                         }
                     }).setTitle("提示").show();
@@ -196,27 +331,40 @@ public class HomeBooksLinearLayout extends LinearLayout{
         }).show();
     }
 
-    public void showPDFDialog(final Context context, int book_pic_url, final String book_name, String remain_num, String publish_org, String author_name, String book_location, String book_intro){
-        new PDFDialog(context, R.style.dialog,book_pic_url,book_name,remain_num,publish_org,author_name,book_location,book_intro,new PDFDialog.OnCloseListener() {
+    public void showPDFDialog(final Context context, final String bookId, String book_pic_url, final String book_name, String remain_num, String publish_org, String author_name, String book_location, String book_intro){
+        new PDFDialog_String(context, R.style.dialog,book_pic_url,book_name,remain_num,publish_org,author_name,book_location,book_intro,new PDFDialog_String.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm,String obj) {
                 if (confirm){
                     if (obj.equals("readBook")){
                         dialog.dismiss();
                         Intent toReadBook = new Intent(context, BookReadActivity.class);
-                        toReadBook.putExtra("bookId","12345"); //传bookId
+                        toReadBook.putExtra("bookId",bookId); //传bookId
                         toReadBook.putExtra("bookName",book_name); //传bookName
                         context.startActivity(toReadBook);
                     }
                     else if (obj.equals("joinBookself")){
                         new CommomDialog(context, R.style.dialog, "您确定将此书添加到书架？", new CommomDialog.OnCloseListener(){
                             @Override
-                            public void onClick(Dialog dialog, boolean confirm) {
+                            public void onClick(final Dialog dialog, boolean confirm) {
                                 if(confirm){
                                     //发送添加图书的请求信息
                                     //根据返回信息进行Toast
-                                    Toast.makeText(context,"添加成功",Toast.LENGTH_SHORT).show();
-                                    dialog.dismiss();
+                                    getMethod addBookself=new getMethod();
+                                    addBookself.setOnFinishListener(new OnGetFinishListener() {
+                                        @Override
+                                        public void OnGetFinished(String backInfo) {
+                                            try {
+                                                JSONObject back=new JSONObject(backInfo);
+                                                String info = back.getString("info");
+                                                Toast.makeText(context,info,Toast.LENGTH_SHORT).show();
+                                                dialog.dismiss();
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                    addBookself.getInfo(context, Urls.addBookself+"?bookId="+bookId);
                                 }
                             }
                         }).setTitle("提示").show();

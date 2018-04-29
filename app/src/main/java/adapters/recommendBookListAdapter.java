@@ -1,6 +1,7 @@
 package adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
 
 import beans.recommendBookListBean;
 import nl.neulibrary.R;
+import tools.BitmapCache;
 
 
 public class recommendBookListAdapter extends BaseAdapter{
@@ -20,8 +26,10 @@ public class recommendBookListAdapter extends BaseAdapter{
     private List<recommendBookListBean> mDatas;
     ViewHolder holder = null;
     recommendBookListBean bean ;
+    Context context;
 
     public recommendBookListAdapter(Context context, List<recommendBookListBean> datas) {
+        this.context=context;
         mInflater = LayoutInflater.from(context);
         mDatas = datas;
     }
@@ -70,13 +78,21 @@ public class recommendBookListAdapter extends BaseAdapter{
         final TextView bookInfo = holder.bookInfo;
 
         bean = mDatas.get(i);
-        //发送请求获取用户头像资源，并更新
+
+        holder.bookImage.setTag(bean.getBook_url());
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.bookImage, R.drawable.loading_on, R.drawable.loading_wrong);
+        imageLoader.get(bean.getBook_url(), listener);
 
         holder.bookId.setText(bean.getBookId());
-        holder.bookImage.setImageResource(bean.getBook_image());
-        holder.bookImage.setTag(bean.getBook_image());
+//        holder.bookImage.setImageResource(bean.getBook_image());
+//        holder.bookImage.setTag(bean.getBook_image());
+        holder.isPDF.setTag(bean.getPDF());
         if (bean.getPDF()){
             holder.isPDF.setVisibility(View.VISIBLE);
+        }else{
+            holder.isPDF.setVisibility(View.INVISIBLE);
         }
         holder.bookName.setText(bean.getBookName());
         if (bean.getBookstatus()) {

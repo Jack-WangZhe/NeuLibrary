@@ -78,7 +78,7 @@ public class rf_type extends Fragment implements View.OnClickListener{
     //动态添加组件
     public void dy_addView(){
         for (int i = 1;i<=4;i++){
-            HomeBooksLinearLayout bookline = new HomeBooksLinearLayout(this.getActivity());
+            /*HomeBooksLinearLayout bookline = new HomeBooksLinearLayout(this.getActivity());
             if(i==1){
                 bookline.setBookInfo(this.getActivity(),1,R.drawable.book1,"天堂炼狱",true,true);
                 bookline.setBookInfo(this.getActivity(),2,R.drawable.book2,"那些年",false,true);
@@ -99,7 +99,7 @@ public class rf_type extends Fragment implements View.OnClickListener{
                 bookline.setBookInfo(this.getActivity(),1,R.drawable.book10,"HARUKI",false,false);
                 bookline.setBookInfo(this.getActivity(),2,R.drawable.book11,"活出自我",true,true);
             }
-            recommendBooks.addView(bookline);
+            recommendBooks.addView(bookline);*/
         }
     }
 

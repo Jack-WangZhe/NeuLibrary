@@ -1,5 +1,6 @@
 package nl.neulibrary;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,12 +42,15 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
 
     private String localFont = "Arial"; //本地字体
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除标题栏
         removeTitle.remove(this);
         setContentView(R.layout.activity_self_site_word_style);
+        sharedPreferences=getSharedPreferences("userInfo.txt",MODE_PRIVATE);
         initView();
         initClickView();
         initTextStyle();
@@ -118,6 +122,29 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
     public void updateTextChecked(){
         //查询sharepreference中字体样式的值，若不存在则不进行处理
         //若存在则将ArialChecked隐藏，并将对应的选择显示
+        localFont=sharedPreferences.getString("textStyle","Arial");
+        ArialChecked.setVisibility(View.GONE);
+        if(localFont.equals("Arial")){
+            ArialChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("YouYuan")){
+            YouYuanChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("ZhunYuan")){
+            ZhunYuanChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("XinSong")){
+            XinSongChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("XinWei")){
+            XinWeiChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("XingKai")){
+            XingKaiChecked.setVisibility(View.VISIBLE);
+        }
+        else if(localFont.equals("CaiYun")){
+            CaiYunChecked.setVisibility(View.VISIBLE);
+        }
     }
 
     //更换被选中字体样式
@@ -147,6 +174,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View view) {
+        SharedPreferences.Editor editor=sharedPreferences.edit();
         switch (view.getId()) {
             case R.id.back_self:
                 finish();
@@ -157,6 +185,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 ArialChecked.setVisibility(View.VISIBLE);
                 localFont = "Arial";
                 //将宋体字体样式的值存储至sharepreference中
+                editor.putString("textStyle","Arial");
                 break;
             case R.id.YouYuanStyle:
                 Toast.makeText(this,"切换字体样式:幼圆",Toast.LENGTH_SHORT).show();
@@ -164,6 +193,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 YouYuanChecked.setVisibility(View.VISIBLE);
                 localFont = "YouYuan";
                 //将幼圆字体样式的值存储至sharepreference中
+                editor.putString("textStyle","YouYuan");
                 break;
             case R.id.ZhunYuanStyle:
                 Toast.makeText(this,"切换字体样式:方正准圆",Toast.LENGTH_SHORT).show();
@@ -171,6 +201,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 ZhunYuanChecked.setVisibility(View.VISIBLE);
                 localFont = "ZhunYuan";
                 //将方正准圆字体样式的值存储至sharepreference中
+                editor.putString("textStyle","ZhunYuan");
                 break;
             case R.id.XinSongStyle:
                 Toast.makeText(this,"切换字体样式:华文新宋",Toast.LENGTH_SHORT).show();
@@ -178,6 +209,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 XinSongChecked.setVisibility(View.VISIBLE);
                 localFont = "XinSong";
                 //将华文新宋字体样式的值存储至sharepreference中
+                editor.putString("textStyle","XinSong");
                 break;
             case R.id.XinWeiStyle:
                 Toast.makeText(this,"切换字体样式:华文新魏",Toast.LENGTH_SHORT).show();
@@ -185,6 +217,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 XinWeiChecked.setVisibility(View.VISIBLE);
                 localFont = "XinWei";
                 //将华文新魏字体样式的值存储至sharepreference中
+                editor.putString("textStyle","XinWei");
                 break;
             case R.id.XingKaiStyle:
                 Toast.makeText(this,"切换字体样式:华文行楷",Toast.LENGTH_SHORT).show();
@@ -192,6 +225,7 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 XingKaiChecked.setVisibility(View.VISIBLE);
                 localFont = "XingKai";
                 //将华文行楷字体样式的值存储至sharepreference中
+                editor.putString("textStyle","XingKai");
                 break;
             case R.id.CaiYunStyle:
                 Toast.makeText(this,"切换字体样式:华文彩云",Toast.LENGTH_SHORT).show();
@@ -199,7 +233,9 @@ public class selfSite_wordStyleActivity extends AppCompatActivity implements Vie
                 CaiYunChecked.setVisibility(View.VISIBLE);
                 localFont = "CaiYun";
                 //将华文彩云字体样式的值存储至sharepreference中
+                editor.putString("textStyle","CaiYun");
                 break;
         }
+        editor.commit();
     }
 }

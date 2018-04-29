@@ -8,11 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
 
 import beans.serviceRankListByBooksBean;
 import beans.serviceRankListByTimeBean;
 import nl.neulibrary.R;
+import tools.BitmapCache;
 import tools.CircleImageView;
 
 /**
@@ -24,10 +29,12 @@ public class serviceRankListByTimeAdapter extends BaseAdapter{
     private List<serviceRankListByTimeBean> mDatas;
     ViewHolder holder = null;
     serviceRankListByTimeBean bean ;
+    Context context;
 
 
     //serviceRankListByBooksAdapter，通过Context获得Layout.inflater，然后通过inflater加载item的布局
     public serviceRankListByTimeAdapter(Context context, List<serviceRankListByTimeBean> datas) {
+        this.context=context;
         mInflater = LayoutInflater.from(context);
         mDatas = datas;
     }
@@ -64,6 +71,10 @@ public class serviceRankListByTimeAdapter extends BaseAdapter{
             //else里面说明，view已经被复用了，说明view中已经设置过tag了，即holder
             holder = (ViewHolder) view.getTag();
         }
+        holder.goldMedal.setVisibility(View.GONE);
+        holder.silvermedal.setVisibility(View.GONE);
+        holder.coppermedal.setVisibility(View.GONE);
+        holder.usersRank.setVisibility(View.VISIBLE);
         bean = mDatas.get(i);
         holder.usersRank.setText(bean.getRankNumber()+"");
         if (bean.getRankNumber()==1){
@@ -80,7 +91,15 @@ public class serviceRankListByTimeAdapter extends BaseAdapter{
         }
         //发送请求获取用户头像资源，并更新
         //holder.usersPhoto.setImageSource();
-        holder.usersPhoto.setImageResource(bean.getUserPhotoImage());
+//        holder.usersPhoto.setImageResource(bean.getUserPhotoImage());
+        holder.usersPhoto.setTag(bean.getUserPhotoURL());
+        //发送请求获取用户头像资源，并更新
+        RequestQueue mQueue = Volley.newRequestQueue(context);
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.usersPhoto, R.drawable.loading_on, R.drawable.loading_wrong);
+        if(((String)holder.usersPhoto.getTag()!=null)&&(holder.usersPhoto.getTag().equals(bean.getUserPhotoURL()))){
+            imageLoader.get(bean.getUserPhotoURL(), listener);
+        }
         holder.usersName.setText(bean.getUserName());
         holder.getNumbers.setText(bean.getUserLearnTime());
         return view;

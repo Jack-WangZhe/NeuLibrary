@@ -11,7 +11,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="200dp"
             android:background="#ffffff">
 
             <RelativeLayout
@@ -23,7 +23,6 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -70,7 +69,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:orientation="horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     >
 
@@ -153,251 +152,255 @@
 
         </RelativeLayout>
 
-
-        <LinearLayout
-            android:orientation="vertical"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
             <LinearLayout
-                android:id="@+id/selfBookself"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_bookself"
-                    android:layout_marginRight="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/selfBookself"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="我的书架"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_bookself"
+                        android:layout_marginRight="30dp"/>
 
-            <!-- 我的消息 -->
-            <LinearLayout
-                android:id="@+id/selfMessage"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="我的书架"/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_message"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 我的消息 -->
+                <LinearLayout
+                    android:id="@+id/selfMessage"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="我的消息"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_message"
+                        android:layout_marginRight="30dp"/>
 
-            <!-- 我的动态 -->
-            <LinearLayout
-                android:id="@+id/selfDynamic"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="我的消息"/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_dynamic"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 我的动态 -->
+                <LinearLayout
+                    android:id="@+id/selfDynamic"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="我的动态"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_dynamic"
+                        android:layout_marginRight="30dp"/>
 
-            <!-- 阅读记录 -->
-            <LinearLayout
-                android:id="@+id/selfReadRecord"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="我的动态"/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_read_record"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 阅读记录 -->
+                <LinearLayout
+                    android:id="@+id/selfReadRecord"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="阅读记录"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_read_record"
+                        android:layout_marginRight="30dp"/>
 
-            <!-- 设置 -->
-            <LinearLayout
-                android:id="@+id/selfSite"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="阅读记录"/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_site"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 设置 -->
+                <LinearLayout
+                    android:id="@+id/selfSite"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="设置"/>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_site"
+                        android:layout_marginRight="30dp"/>
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="修改密码"/>
 
-            <!-- 积分说明 -->
-            <LinearLayout
-                android:id="@+id/selfPointsDes"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/self_points_des"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 积分说明 -->
+                <LinearLayout
+                    android:id="@+id/selfPointsDes"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="积分说明"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/self_points_des"
+                        android:layout_marginRight="30dp"/>
 
-            <!-- 退出登录 -->
-            <LinearLayout
-                android:id="@+id/outLogin"
-                android:paddingLeft="50dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="积分说明"/>
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/out_software"
-                    android:layout_marginRight="30dp"/>
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- 退出登录 -->
+                <LinearLayout
+                    android:id="@+id/outLogin"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="13dp"
-                    android:textColor="#000000"
-                    android:text="退出登录"/>
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="80dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bfbfbf">
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/out_software"
+                        android:layout_marginRight="30dp"/>
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="#000000"
+                        android:text="退出登录"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#bfbfbf">
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
 </FrameLayout>

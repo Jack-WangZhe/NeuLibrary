@@ -15,12 +15,16 @@ import fragments.playgroundFragment;
 import fragments.recommendFragment;
 import fragments.selfFragment;
 import fragments.surviceFragment;
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
+import tools.CustomViewPager;
 import tools.removeTitle;
 
 public class HomeActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
     //对应控件
-    private ViewPager AllPager;
+    private CustomViewPager AllPager;
     private RadioGroup navigate;
     private RadioButton recommend;
     private RadioButton playground;
@@ -41,7 +45,8 @@ public class HomeActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     //初始化控件
     public void initView(){
-        AllPager = (ViewPager)findViewById(R.id.AllPager);
+        AllPager = (CustomViewPager)findViewById(R.id.AllPager);
+        AllPager.setNoScroll(false);
         navigate = (RadioGroup)findViewById(R.id.navigate);
         recommend = (RadioButton)findViewById(R.id.recommend);
         playground = (RadioButton)findViewById(R.id.playground);
@@ -136,5 +141,18 @@ public class HomeActivity extends AppCompatActivity implements RadioGroup.OnChec
         if(AllPager.getCurrentItem()!=current){
             AllPager.setCurrentItem(current);
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getMethod quitRequest=new getMethod();
+        quitRequest.getInfo(this, Urls.quit);
+        quitRequest.setOnFinishListener(new OnGetFinishListener() {
+            @Override
+            public void OnGetFinished(String s) {
+
+            }
+        });
     }
 }

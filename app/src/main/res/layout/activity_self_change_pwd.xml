@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.neulibrary.selfChangePwdActivity"
+    android:orientation="vertical">
+
+    <!-- 修改密码 提示 -->
+    <RelativeLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/TopMenu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/back_self"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:textSize="25sp"
+            android:textColor="#8b8b8b"/>
+    </RelativeLayout>
+
+    <!-- 渐变色线条 -->
+    <LinearLayout
+        android:layout_below="@+id/TopMenu"
+        android:id="@+id/FirstLine"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@drawable/self_bookself_decorate"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"></LinearLayout>
+
+    <EditText
+        android:id="@+id/userId"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/self_userid"
+        android:background="@drawable/bg_edittext"
+        android:padding="10dp"
+        android:hint="请输入您的学号"
+        android:textSize="20dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/userPass"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/self_pass"
+        android:background="@drawable/bg_edittext"
+        android:padding="10dp"
+        android:digits="0123456789qwertzuiopasdfghjklyxcvbnm"
+        android:hint="请输入旧密码"
+        android:textSize="20dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/newPass"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/self_checkpass"
+        android:background="@drawable/bg_edittext"
+        android:padding="10dp"
+        android:digits="0123456789qwertzuiopasdfghjklyxcvbnm"
+        android:hint="请输入新密码"
+        android:textSize="20dp"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_marginTop="30px"
+        android:id="@+id/submitBtn"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/self_changeinfobtn"
+        android:textColor="#ffffff"
+        android:text="  确认修改  "
+        android:textSize="20dp"
+        />
+
+</LinearLayout>

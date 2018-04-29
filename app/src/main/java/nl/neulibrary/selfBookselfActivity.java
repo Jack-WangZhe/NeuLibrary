@@ -3,10 +3,19 @@ package nl.neulibrary;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
 import tools.HomeBooksLinearLayout;
 import tools.bookSelfLine;
 import tools.removeTitle;
@@ -42,37 +51,44 @@ public class selfBookselfActivity extends AppCompatActivity implements View.OnCl
         addBookSelf.setOnClickListener(this);
     }
 
-    public void initReadBooksDatas(String datas){
-        for (int i = 1;i<=4;i++){
-            HomeBooksLinearLayout bookline = new HomeBooksLinearLayout(this);
-            if(i==1){
-                bookline.setBookInfo(this,1,R.drawable.book1,"天堂炼狱",true,true);
-                bookline.setBookInfo(this,2,R.drawable.book2,"那些年",false,true);
-                bookline.setBookInfo(this,3,R.drawable.book3,"Woody Allen",true,false);
-            }
-            else if(i==2){
-                bookline.setBookInfo(this,1,R.drawable.book4,"秘密花园",true,false);
-                bookline.setBookInfo(this,2,R.drawable.book5,"The Kama Stra",true,false);
-                bookline.setBookInfo(this,3,R.drawable.book6,"Julio Verne",false,true);
-            }
-            else if(i==3){
-                bookline.setBookInfo(this,1,R.drawable.book7,"窗前的花猫",false,false);
-                bookline.setBookInfo(this,2,R.drawable.book8,"左腕的猫",true,true);
-                bookline.setBookInfo(this,3,R.drawable.book9,"Psychopath",false,true);
-            }
-            else if(i==4){
-                bookline.setBookNum(2);
-                bookline.setBookInfo(this,1,R.drawable.book10,"HARUKI",false,false);
-                bookline.setBookInfo(this,2,R.drawable.book11,"活出自我",true,true);
-            }
-            bookSelf.addView(bookline);
-            bookSelfLine line = new bookSelfLine(this);
-            bookSelf.addView(line);
-        }
-    }
-
     public void firstRequest(){
-        initReadBooksDatas("");
+        getMethod getBookselflist = new getMethod();
+        getBookselflist.setOnFinishListener(new OnGetFinishListener() {
+            @Override
+            public void OnGetFinished(String backInfo) {
+                try {
+                    JSONObject back=new JSONObject(backInfo);
+                    if (back.getBoolean("status")){
+                        JSONArray info = back.getJSONArray("info");
+                        int length = info.length();
+                        int times=(int)length/3+1;
+                        for(int i=0;i<times;i++){
+                            HomeBooksLinearLayout bookline = new HomeBooksLinearLayout(selfBookselfActivity.this);
+                            if (length-i*3-3<0){
+                                bookline.setBookNum(length-i*3);
+                            }
+                            for(int j=1;j<=3;j++){
+                                if (i*3+j>length){
+                                    break;
+                                }else{
+                                    JSONObject infoList=info.getJSONObject(i*3+j-1);
+                                    bookline.setBookInfo(selfBookselfActivity.this,infoList.getString("bookId"),j,infoList.getString("book_url"),infoList.getString("bookName"),infoList.getBoolean("bookStatus"),infoList.getBoolean("bookPDF"));
+                                }
+                            }
+                            bookSelf.addView(bookline);
+                            bookSelfLine line = new bookSelfLine(selfBookselfActivity.this);
+                            bookSelf.addView(line);
+                        }
+                    }else{
+                        String info = back.getString("info");
+                        Toast.makeText(selfBookselfActivity.this,info,Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        getBookselflist.getInfo(this, Urls.getBookselfs);
     }
 
     @Override

@@ -2,6 +2,7 @@ package fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +20,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URLDecoder;
 import java.util.ArrayList;
 
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
+import nl.neulibrary.BookReadActivity;
+import nl.neulibrary.HomeActivity;
+import nl.neulibrary.LoginActivity;
 import nl.neulibrary.R;
 import nl.neulibrary.serviceSearchBook;
 import tools.HomeBooksLinearLayout;
@@ -104,13 +116,38 @@ public class recommendFragment extends Fragment implements View.OnClickListener{
                 rf_fragment.setCurrentItem(1);
                 break;
             case R.id.time_clock:
-                new showReadStatusDialog(this.getActivity(), R.style.dialog,"123","20",true,false).show();
+                getMethod getStatusInfo=new getMethod();
+                getStatusInfo.setOnFinishListener(new OnGetFinishListener() {
+                    @Override
+                    public void OnGetFinished(String backInfo) {
+                        try {
+                            JSONObject back = new JSONObject(backInfo);
+                            boolean status = back.getBoolean("status");
+                            if (status){
+                                String info = back.getString("info");
+                                JSONObject infoObj = new JSONObject(info);
+                                int onlineTime=infoObj.getInt("onlineTime");
+                                int readBookNum=infoObj.getInt("readBookNum");
+                                Boolean online30min=infoObj.getBoolean("online30min");
+                                Boolean hasChecked=infoObj.getBoolean("hasChecked");
+                                new showReadStatusDialog(getActivity(), R.style.dialog,onlineTime+"",readBookNum+"",online30min,hasChecked).show();
+                            }else{
+                                Toast.makeText(getActivity(), back.getString("info"),Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                getStatusInfo.getInfo(this.getActivity(), Urls.selfStatusInfo);
                 break;
             case R.id.submitSearch:
                 String searchInfo = searchBook.getText().toString();
                 Intent toSearch = new Intent(this.getActivity(),serviceSearchBook.class);
                 toSearch.putExtra("searchInfo",searchInfo);
                 startActivity(toSearch);
+                searchBook.setText("");
+                searchBook.setFocusable(false);
         }
     }
 

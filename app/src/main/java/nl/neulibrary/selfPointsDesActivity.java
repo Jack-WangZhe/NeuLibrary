@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
 import tools.removeTitle;
 
 public class selfPointsDesActivity extends AppCompatActivity implements View.OnClickListener{
@@ -43,26 +47,24 @@ public class selfPointsDesActivity extends AppCompatActivity implements View.OnC
         //发送volley的get请求，获取积分说明
         //请求地址
         //返回信息:
-        String backInfo = "{\"PointsDes\":\"积分获取途径：\n" +
-                "\n" +
-                "1、登录：1/天；\n" +
-                "2、连续登录：（连续登录天数）点/天，上线29点；\n" +
-                "3、在线时长：1点/小时，每天上线24点\n" +
-                "4、校友圈积分：校友圈分享内容：5点/条，每天上线10点。\n" +
-                "\n" +
-                "积分损耗：\n" +
-                "\n" +
-                "1、校友圈发布不良信息： 5点/条；\n" +
-                "2、推迟归还书籍 ：2点/天；\n" +
-                "3、积分兑换：未开启。\"}";
-        //注意:从网络中获取的数据需要将\n替换成\\n
-        try {
-            JSONObject info = new JSONObject(backInfo);
-            String pointsDes = info.getString("PointsDes");
-            pointsDescription.setText(pointsDes);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        getMethod getPointsDes=new getMethod();
+        getPointsDes.setOnFinishListener(new OnGetFinishListener() {
+            @Override
+            public void OnGetFinished(String backInfo) {
+                try {
+                    JSONObject back = new JSONObject(backInfo);
+                    if (back.getBoolean("status")){
+                        String pointsDes = back.getString("info");
+                        pointsDescription.setText(pointsDes);
+                    }else{
+                        Toast.makeText(selfPointsDesActivity.this,back.getString("info"),Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        getPointsDes.getInfo(this, Urls.getPointsDes);
     }
 
     @Override

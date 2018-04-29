@@ -1,8 +1,10 @@
 package nl.neulibrary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ public class selfSiteActivity extends AppCompatActivity implements View.OnClickL
     private LinearLayout readBackgroundPink; //阅读背景：粉
     private LinearLayout readBackgroundOrange; //阅读背景：橘
     private LinearLayout readBackgroundBlue; //阅读背景：蓝
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -77,10 +80,16 @@ public class selfSiteActivity extends AppCompatActivity implements View.OnClickL
         //通过查找sharepreference值确定当前夜间模式是否开启
         //若无sharepreference值则表示未设定，即为关闭状态
         //若有sharepreference值则根据设定的值进行状态的选择
+        sharedPreferences=getSharedPreferences("userInfo.txt",MODE_PRIVATE);
+        String Mode = sharedPreferences.getString("Mode","simple");
+        if (Mode.equals("night")){
+            nightModel.setChecked(true);
+        }
     }
 
     @Override
     public void onClick(View view) {
+        SharedPreferences.Editor editor=sharedPreferences.edit();
         switch (view.getId())
         {
             case R.id.back_self:
@@ -88,12 +97,15 @@ public class selfSiteActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.largeText:
                 Toast.makeText(this,"切换至大号字体",Toast.LENGTH_SHORT).show();
+                editor.putInt("textSize",30);
                 break;
             case R.id.middleText:
                 Toast.makeText(this,"切换至中号字体",Toast.LENGTH_SHORT).show();
+                editor.putInt("textSize",25);
                 break;
             case R.id.smallText:
                 Toast.makeText(this,"切换至小号字体",Toast.LENGTH_SHORT).show();
+                editor.putInt("textSize",15);
                 break;
             case R.id.toTextStyle:
                 Intent to_selfSite_wordStyle = new Intent(this,selfSite_wordStyleActivity.class);
@@ -101,31 +113,40 @@ public class selfSiteActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.readBackgroundGreen:
                 Toast.makeText(this,"切换至绿色阅读背景",Toast.LENGTH_SHORT).show();
+                editor.putString("textBackground","#C1FFC1");
                 break;
             case R.id.readBackgroundPink:
                 Toast.makeText(this,"切换至粉色阅读背景",Toast.LENGTH_SHORT).show();
+                editor.putString("textBackground","#EED2EE");
                 break;
             case R.id.readBackgroundOrange:
                 Toast.makeText(this,"切换至橙色阅读背景",Toast.LENGTH_SHORT).show();
+                editor.putString("textBackground","#FFEC8B");
                 break;
             case R.id.readBackgroundBlue:
                 Toast.makeText(this,"切换至蓝色阅读背景",Toast.LENGTH_SHORT).show();
+                editor.putString("textBackground","#D1EEEE");
                 break;
         }
+        editor.commit();
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        SharedPreferences.Editor editor=sharedPreferences.edit();
         if(b){
-            Toast.makeText(this,"开启夜间模式",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"开启夜间模式",Toast.LENGTH_SHORT).show();
             //注意：
             //将夜间模式信息记录在sharepreference中
             //待添加...
+            editor.putString("Mode","night");
         }else{
-            Toast.makeText(this,"关闭夜间模式",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"关闭夜间模式",Toast.LENGTH_SHORT).show();
             //注意：
             //将夜间模式信息记录在sharepreference中
             //待添加...
+            editor.putString("Mode","simple");
         }
+        editor.commit();
     }
 }

@@ -3,6 +3,7 @@ package fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,17 +16,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import netRequest.OnGetFinishListener;
+import netRequest.Urls;
+import netRequest.getMethod;
 import nl.neulibrary.LoginActivity;
 import nl.neulibrary.R;
 import nl.neulibrary.selfBookselfActivity;
+import nl.neulibrary.selfChangePwdActivity;
 import nl.neulibrary.selfDynamicActivity;
 import nl.neulibrary.selfMessageActivity;
 import nl.neulibrary.selfPointsDesActivity;
 import nl.neulibrary.selfReadRecordActivity;
 import nl.neulibrary.selfSiteActivity;
 import nl.neulibrary.userInfoActivity;
+import tools.BitmapCache;
 import tools.CircleImageView;
 import tools.CommomDialog;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class selfFragment extends Fragment implements View.OnClickListener{
     //整体fragment
@@ -47,10 +62,14 @@ public class selfFragment extends Fragment implements View.OnClickListener{
     private LinearLayout selfPointsDes; //积分说明选项
     private LinearLayout outLogin; //退出登录选项
 
-    //用户信息
-    private String getUserInfo; //发送的用户信息
-    private String userInfo; //用户资料
+    SharedPreferences sharedPreferences;
 
+    String userName_text;
+    String userAttention_text;
+    String userFans_text;
+    String userIntegral_text;
+    Boolean hasChecked_status;
+    String userImg_url;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,22 +107,15 @@ public class selfFragment extends Fragment implements View.OnClickListener{
         selfSite = (LinearLayout)view.findViewById(R.id.selfSite);
         selfPointsDes = (LinearLayout)view.findViewById(R.id.selfPointsDes);
         outLogin = (LinearLayout)view.findViewById(R.id.outLogin);
-    }
-
-    //更新数据
-    public void updateUserInfo(){
-        //先通过SharePreference获取是否存储用户的基本信息
-        //通过网络获取用户信息并更新数据
-        //发送数据
-            //通过SharePreference获得ID和密码
-            //getUserInfo= "{\"Id\":\"21212\",\"Password\":\"1122\"}";
-        //接受数据
-            //1.校验成功，返回用户资料
-                //eg.  {"status":"True,"info":{"userName":"Jack","checkStatus":"True"，"userAttention":1,"userFans":2,"userIntegral":300}}
-                //替换数据信息，存储至SharePreference中
-            //2.校验失败，提示错误信息(若为密码和用户名不符，则跳转到登录界面)
-                //eg.  {"status":"False","info":"用户名与密码不匹配"}\
-                //跳转到登录界面
+        sharedPreferences=getActivity().getSharedPreferences("userInfo.txt",MODE_PRIVATE);
+        userName_text=sharedPreferences.getString("userName",userName.getText().toString());
+        userAttention_text=sharedPreferences.getString("userAttention",userAttention.getText().toString());
+        userFans_text=sharedPreferences.getString("userFans",userFans.getText().toString());
+        userIntegral_text=sharedPreferences.getString("userIntegral",userIntegral.getText().toString());
+        userName.setText(userName_text);
+        userAttention.setText(userAttention_text);
+        userFans.setText(userFans_text);
+        userIntegral.setText(userIntegral_text);
     }
 
     //初始化点击控件
@@ -117,6 +129,64 @@ public class selfFragment extends Fragment implements View.OnClickListener{
         selfPointsDes.setOnClickListener(this);
         outLogin.setOnClickListener(this);
         userPhoto.setOnClickListener(this);
+    }
+
+    //更新数据
+    public void updateUserInfo(){
+        getMethod getSelfInfo=new getMethod();
+        getSelfInfo.setOnFinishListener(new OnGetFinishListener() {
+            @Override
+            public void OnGetFinished(String s) {
+                try {
+                    JSONObject back = new JSONObject(s);
+                    Boolean status = back.getBoolean("status");
+                    if (status){
+                        //接受数据
+                        //1.校验成功，返回用户资料
+                        //eg.  {"status":"True,"info":{"userName":"Jack","checkStatus":"True"，"userAttention":1,"userFans":2,"userIntegral":300}}
+                        //替换数据信息，存储至SharePreference中
+                        JSONObject info = back.getJSONObject("info");
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        userName_text = info.getString("userName");
+                        editor.putString("userName",userName_text);
+                        userName.setText(userName_text);
+                        userAttention_text=info.getString("userAttentions");
+                        editor.putString("userAttentions",userName_text);
+                        userAttention.setText(userAttention_text);
+                        userFans_text=info.getString("userFans");
+                        editor.putString("userFans",userName_text);
+                        userFans.setText(userFans_text);
+                        userIntegral_text = info.getString("userIntegral");
+                        editor.putString("userIntegral",userName_text);
+                        userIntegral.setText(userIntegral_text);
+                        hasChecked_status=info.getBoolean("hasChecked");
+                        if (hasChecked_status){
+                            sign_in_btn.setVisibility(View.GONE);
+                            signed_in_btn.setVisibility(View.VISIBLE);
+                        }
+                        userImg_url=info.getString("userImg");
+                        editor.putString("userImg",userName_text);
+                        RequestQueue mQueue = Volley.newRequestQueue(getActivity());
+                        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+                        ImageLoader.ImageListener listener = ImageLoader.getImageListener(userPhoto, R.drawable.loading_on, R.drawable.loading_wrong);
+                        imageLoader.get(userImg_url, listener);
+                        editor.commit();
+                    }else{
+                        //2.校验失败，提示错误信息(若为密码和用户名不符，则跳转到登录界面)
+                        //eg.  {"status":"False","info":"用户名与密码不匹配"}\
+                        //跳转到登录界面
+                        String info = back.getString("info");
+                        Toast.makeText(getActivity(),info,Toast.LENGTH_SHORT).show();
+                        Intent toLogin=new Intent(getActivity(),LoginActivity.class);
+                        startActivity(toLogin);
+                        getActivity().finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        getSelfInfo.getInfo(getActivity(), Urls.getSelfInfo);
     }
 
     @Override
@@ -148,7 +218,7 @@ public class selfFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.selfSite:
                 //Toast.makeText(this.getActivity(),"设置",Toast.LENGTH_SHORT).show();
-                Intent to_selfSite = new Intent(getActivity(),selfSiteActivity.class);
+                Intent to_selfSite = new Intent(getActivity(),selfChangePwdActivity.class);
                 startActivity(to_selfSite);
                 break;
             case R.id.selfPointsDes:
@@ -173,6 +243,7 @@ public class selfFragment extends Fragment implements View.OnClickListener{
             case R.id.userPhoto:
                 Intent toUserInfo = new Intent(this.getActivity(),userInfoActivity.class);
                 toUserInfo.putExtra("isUserSelf",true);
+                toUserInfo.putExtra("userId",sharedPreferences.getString("userId",""));
                 startActivity(toUserInfo);
                 break;
         }
